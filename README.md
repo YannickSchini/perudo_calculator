@@ -24,5 +24,6 @@ My aim here is to use something like [Dash](https://dash.plotly.com/) to have a 
 
 * Wikipedia article regarding [Binomial Coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)
 * Gérard Villemin's blog regarding [dice statistics](http://villemin.gerard.free.fr/Denombre/JeuxDes.htm)
+* [This post](https://community.plotly.com/t/splitting-callback-definitions-in-multiple-files/10583/2) about splitting a dash app and especially putting the callbacks in other file than app.py
 
 Yannick Schini, 2021
