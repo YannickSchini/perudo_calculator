@@ -5,8 +5,9 @@ My aim here is to use something like [Dash](https://dash.plotly.com/) to have a 
 
 ## TODO List
 
-* Add the Perudo rule for the value 1.
-* Add the ability to have several players.
+* Add the Perudo rule for the value 1 which acts like a wildcard
+* Introduce the notion of players
+* Take into account one's own dices for which we know the values (using Bayes' rule ?)
 
 ## What I learned
 
@@ -17,7 +18,11 @@ My aim here is to use something like [Dash](https://dash.plotly.com/) to have a 
 
 * Create a first static page
 * Perform a calculation for 1 player with 1 normal dice.
-* Add the ability to have several dices (still only one player).
+* Add the ability to have several dices (still no notion of players yet).
 
+## References
+
+* Wikipedia article regarding [Binomial Coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)
+* Gérard Villemin's blog regarding [dice statistics](http://villemin.gerard.free.fr/Denombre/JeuxDes.htm)
 
 Yannick Schini, 2021
