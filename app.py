@@ -19,7 +19,7 @@ app.layout = html.Div(children=[
                step=None,
                marks=dict(zip(dict_keys, dict_values)),
                included=False),
-    dcc.Graph(id='example-graph')
+    dcc.Graph(id='Proba of matches')
 ])
 
 if __name__ == "__main__":

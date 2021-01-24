@@ -6,7 +6,7 @@ from perudo_stats import get_proba_of_given_face
 from server import app
 
 
-@app.callback(dash.dependencies.Output('example-graph', 'figure'),
+@app.callback(dash.dependencies.Output('Proba of matches', 'figure'),
               [dash.dependencies.Input('Total Amount of Dices', 'value')])
 def calculate_proba_graph(number_of_dice: int) -> Figure:
     """ Function used to calculate the probability of match graph based on \
