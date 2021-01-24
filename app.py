@@ -2,7 +2,6 @@ import dash_html_components as html
 import dash_core_components as dcc
 from server import app
 from perudo_calculator import calculate_proba_graph_for_paco_faces
-from perudo_calculator import calculate_proba_graph_for_normal_faces
 
 dict_values = [str(x) for x in range(1, 26)]
 dict_keys = range(1, 26)
@@ -20,8 +19,7 @@ app.layout = html.Div(children=[
                step=None,
                marks=dict(zip(dict_keys, dict_values)),
                included=False),
-    dcc.Graph(id="Proba of matches for Paco faces"),
-    dcc.Graph(id="Proba of matches for normal faces")
+    dcc.Graph(id="Proba of matches")
 ])
 
 if __name__ == "__main__":

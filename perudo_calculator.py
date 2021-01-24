@@ -6,33 +6,18 @@ from perudo_stats import get_proba_of_given_face
 from server import app
 
 
-@app.callback(
-    dash.dependencies.Output("Proba of matches for Paco faces", "figure"),
-    [dash.dependencies.Input("Total Amount of Dices", "value")])
+@app.callback(dash.dependencies.Output("Proba of matches", "figure"),
+              [dash.dependencies.Input("Total Amount of Dices", "value")])
 def calculate_proba_graph_for_paco_faces(number_of_dice: int) -> Figure:
     """ Function used to calculate the probability of match graph based on \
         the total number of dice."""
-    df = pd.DataFrame({"Matches": range(1, number_of_dice)})
-    df["proba"] = df["Matches"].apply(
+    df = pd.DataFrame({"Number of matches": range(1, number_of_dice)})
+    df["Paco faces matches"] = df["Number of matches"].apply(
         lambda x: get_proba_of_given_face(number_of_dice, x, True))
-    fig = px.line(df,
-                  x="Matches",
-                  y="proba",
-                  title="Probability of getting x Pacos")
-    return fig
-
-
-@app.callback(
-    dash.dependencies.Output("Proba of matches for normal faces", "figure"),
-    [dash.dependencies.Input("Total Amount of Dices", "value")])
-def calculate_proba_graph_for_normal_faces(number_of_dice: int) -> Figure:
-    """ Function used to calculate the probability of match graph based on \
-        the total number of dice."""
-    df = pd.DataFrame({"Matches": range(1, number_of_dice)})
-    df["proba"] = df["Matches"].apply(
+    df["Normal faces matches"] = df["Number of matches"].apply(
         lambda x: get_proba_of_given_face(number_of_dice, x, False))
     fig = px.line(df,
-                  x="Matches",
-                  y="proba",
-                  title="Probability of getting x normal faces")
+                  x="Number of matches",
+                  y=["Paco faces matches", "Normal faces matches"],
+                  title="Probability of getting x matches")
     return fig
