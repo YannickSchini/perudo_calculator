@@ -11,7 +11,7 @@ from server import app
 def calculate_proba_graph_for_paco_faces(number_of_dice: int) -> Figure:
     """ Function used to calculate the probability of match graph based on \
         the total number of dice."""
-    df = pd.DataFrame({"Number of matches": range(1, number_of_dice)})
+    df = pd.DataFrame({"Number of matches": range(0, number_of_dice + 1)})
     df["Paco faces matches"] = df["Number of matches"].apply(
         lambda x: get_proba_of_given_face(number_of_dice, x, True))
     df["Normal faces matches"] = df["Number of matches"].apply(
