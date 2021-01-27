@@ -14,6 +14,7 @@ You can then take your favorite web browser, navigate to `http://127.0.0.1:8050/
 
 ## TODO List
 
+* Make the UI a bit clearer: something inspired by https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-clinical-analytics for example ?
 * Introduce the notion of players
 * Take into account one's own dices for which we know the values (using Bayes' rule ?)
 
