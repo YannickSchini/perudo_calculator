@@ -1,9 +1,16 @@
+H1 {
+        text-align: center;
+        font-size: 300%;
+}
+
 #left-column {
+        width: 30%;
         float: left;
         height: 100%;
 }
 
 #right-column {
+        width: 70%;
         float: right;
         height: 100%;
 }
