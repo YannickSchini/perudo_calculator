@@ -11,7 +11,7 @@ app.layout = html.Div(
     children=[
         # Left column
         html.Div(id="left-column",
-                 children=[
+                 children=html.Div(children=[
                      html.H1(children="Perudo Calculator"),
                      html.Div(children="""
                         This is a Perudo calculator: it's aim is to help you \
@@ -24,7 +24,7 @@ app.layout = html.Div(
                                 step=None,
                                 marks=dict(zip(dict_keys, dict_values)),
                                 included=False)
-                 ]),
+                 ])),
         # Right column
         html.Div(id="right-column",
                  children=[dcc.Graph(id="Proba of matches")])

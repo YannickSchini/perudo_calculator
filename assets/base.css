@@ -1,0 +1,10 @@
+#left-column {
+        float: left;
+        height: 100%;
+}
+
+#right-column {
+        float: right;
+        height: 100%;
+}
+
