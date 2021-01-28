@@ -22,6 +22,8 @@ You can then take your favorite web browser, navigate to `http://127.0.0.1:8050/
 
 * Apparently Plotly requires pandas ?
 * Unittests are not run if they don't start with "test_"
+* How HTML and CSS work (I mean the basics)
+* How to setup Vim for autocompleting CSS
 
 ## Done
 
