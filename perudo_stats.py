@@ -31,3 +31,41 @@ def get_proba_of_given_face(total_num_of_dice: int, num_of_matches: int,
         total_num_of_dice - num_of_matches) * math.comb(
             total_num_of_dice, num_of_matches)
     return result
+
+
+def get_posterior_proba() -> float:
+    """ Function to get the posterior probability, this means the probability of
+    getting X matches in total in all the dices knowing you have Y matches in
+    your Z dices.
+
+    I'm using Bayes' Theorem for that:
+
+                        P(B|A) * P(A)
+            P(A|B) =  ----------------
+                             P(B)
+
+    Applied to our case, we get:
+        - P(A|B) is the probability of getting X matchs in total knowing we
+          have Y matches in our Z dices
+        - P(A) is the probability of getting X matches in all dices
+        - P(B) is the probability of getting Y matches in our Z dices
+        - P(B|A) is the probability of getting Y matches in our Z dices knowing
+          there are X matches in all the dices.
+
+    The first term is the one we're looking for.
+    The second and third terms, we can calculate using get_proba_of_given_face
+    The last term, we calculate using the following function:
+    P(getting Y matches in Z dices | there are X matches in W total dices) =
+
+        math.comb(Y, Z) * math.comb(W-Y, X-Y)
+        -------------------------------------
+                    math.comb(W, X)
+
+    Parameters:
+        - Total amount of dices (W)
+        - Total amount of matches (X)
+        - One's amount of dices (Z)
+        - One's amount of matches (Y)
+
+    """
+    raise NotImplementedError
