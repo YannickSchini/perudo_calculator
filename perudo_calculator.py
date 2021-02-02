@@ -1,6 +1,7 @@
 import dash
 import pandas as pd
 import plotly.express as px
+import dash_core_components as dcc
 import dash_html_components as html
 from plotly.graph_objects import Figure as Figure
 from perudo_stats import get_proba_of_given_face
@@ -26,7 +27,7 @@ def calculate_proba_graph_for_paco_faces(number_of_dice: int) -> Figure:
 
 def description_card() -> html.Div:
     """ Generate the description card of the page.
-    returns a Div containing the title & descriptions """
+    Returns a Div containing the title & descriptions """
     return html.Div(
         id="description-card",
         children=[
@@ -37,7 +38,46 @@ def description_card() -> html.Div:
                 children="Use statistics to help you make the best decisions \
                 and win against your best friends and enemies at the \
                 game of Perudo ! Input data about your game below, and\
-                use the statistics to the right to win !",
-            ),
-        ],
-    )
+                use the statistics to the right to win !")
+        ])
+
+
+def input_card() -> html.Div:
+    """ Generation the inputs part of the page.
+    Returns a Div containing all input setters. """
+    dict_values = [str(x) for x in range(1, 26)]
+    dict_keys = range(1, 26)
+    return html.Div(
+        id="inputs-card",
+        children=[
+            html.H5(children="How many dices do you have left ?"),
+            dcc.Dropdown(id="Own Dice Number",
+                         options=[{
+                             "label": "One",
+                             "value": 1
+                         }, {
+                             "label": "Two",
+                             "value": 2
+                         }, {
+                             "label": "Three",
+                             "value": 3
+                         }, {
+                             "label": "Four",
+                             "value": 4
+                         }, {
+                             "label": "Five",
+                             "value": 5
+                         }, {
+                             "label": "Six",
+                             "value": 6
+                         }],
+                         value=6),
+            html.H5(children="How many dices do other players have ?"),
+            dcc.Slider(id="Total Amount of Dices",
+                       min=1,
+                       max=25,
+                       value=10,
+                       step=None,
+                       marks=dict(zip(dict_keys, dict_values)),
+                       included=False)
+        ])
