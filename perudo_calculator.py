@@ -12,8 +12,8 @@ from server import app
     dash.dependencies.Input("Own Dice Number", "value"),
     dash.dependencies.Input("Other Players Dice Number", "value")
 ])
-def calculate_proba_graph_for_paco_faces(own_dice_num: int,
-                                         other_dice_num: int) -> Figure:
+def calculate_proba_graph_for_paco_faces(other_dice_num: int,
+                                         own_dice_num: int) -> Figure:
     """ Function used to calculate the probability of match graph based on \
         the total number of dice."""
     total_dice_num = own_dice_num + other_dice_num
@@ -75,7 +75,8 @@ def input_card() -> html.Div:
                              "label": "Six",
                              "value": 6
                          }],
-                         value=6),
+                         placeholder="Select how many dices you have left",
+                         value=0),
             html.H5(children="How many dices do other players have ?"),
             dcc.Slider(id="Other Players Dice Number",
                        min=1,
