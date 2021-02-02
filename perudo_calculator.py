@@ -8,16 +8,20 @@ from perudo_stats import get_proba_of_given_face
 from server import app
 
 
-@app.callback(dash.dependencies.Output("Proba of matches", "figure"),
-              [dash.dependencies.Input("Total Amount of Dices", "value")])
-def calculate_proba_graph_for_paco_faces(number_of_dice: int) -> Figure:
+@app.callback(dash.dependencies.Output("Proba of matches", "figure"), [
+    dash.dependencies.Input("Own Dice Number", "value"),
+    dash.dependencies.Input("Other Players Dice Number", "value")
+])
+def calculate_proba_graph_for_paco_faces(own_dice_num: int,
+                                         other_dice_num: int) -> Figure:
     """ Function used to calculate the probability of match graph based on \
         the total number of dice."""
-    df = pd.DataFrame({"Number of matches": range(0, number_of_dice + 1)})
+    total_dice_num = own_dice_num + other_dice_num
+    df = pd.DataFrame({"Number of matches": range(0, total_dice_num + 1)})
     df["Paco faces matches"] = df["Number of matches"].apply(
-        lambda x: get_proba_of_given_face(number_of_dice, x, True))
+        lambda x: get_proba_of_given_face(total_dice_num, x, True))
     df["Normal faces matches"] = df["Number of matches"].apply(
-        lambda x: get_proba_of_given_face(number_of_dice, x, False))
+        lambda x: get_proba_of_given_face(total_dice_num, x, False))
     fig = px.line(df,
                   x="Number of matches",
                   y=["Paco faces matches", "Normal faces matches"],
@@ -73,7 +77,7 @@ def input_card() -> html.Div:
                          }],
                          value=6),
             html.H5(children="How many dices do other players have ?"),
-            dcc.Slider(id="Total Amount of Dices",
+            dcc.Slider(id="Other Players Dice Number",
                        min=1,
                        max=25,
                        value=10,

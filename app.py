@@ -4,9 +4,6 @@ from server import app
 from perudo_calculator import calculate_proba_graph_for_paco_faces
 from perudo_calculator import description_card, input_card
 
-dict_values = [str(x) for x in range(1, 26)]
-dict_keys = range(1, 26)
-
 app.layout = html.Div(
     id="app-container",
     children=[
