@@ -77,6 +77,7 @@ def input_card() -> html.Div:
                          }],
                          placeholder="Select how many dices you have left",
                          value=0),
+            html.Div(id="Own Dive Values Container"),
             html.H5(children="How many dices do other players have ?"),
             dcc.Slider(id="Other Players Dice Number",
                        min=1,
@@ -86,3 +87,19 @@ def input_card() -> html.Div:
                        marks=dict(zip(dict_keys, dict_values)),
                        included=False)
         ])
+
+
+@app.callback(dash.dependencies.Output("Own Dive Values Container",
+                                       "children"),
+              dash.dependencies.Input("Own Dice Number", "value"))
+def choose_own_dice_values(own_dice_num: int) -> html.Div:
+    div_list = []
+    for i in range(own_dice_num):
+        new_input = dcc.Input(id="OwnDice" + str(i + 1),
+                              type="number",
+                              debounce=True,
+                              placeholder="Value of dice #" + str(i + 1),
+                              min=1,
+                              max=6),
+        div_list.append(html.Div(children=new_input))
+    return div_list
