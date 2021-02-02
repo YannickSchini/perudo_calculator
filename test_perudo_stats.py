@@ -64,20 +64,6 @@ class TestStatistics(unittest.TestCase):
         self.assertAlmostEqual(result_two_dice_two_match, 4 / 36)
         self.assertAlmostEqual(result_three_dice_three_matchs, 8 / 6**3)
 
-    def test_get_posterior_proba(self) -> None:
-        """ This function tests the probability calculator with a few values
-        gotten by hand, which explains why I did not go to bigger amount of
-        dices (or matches)"""
-        # Given
-        first_input = (6, 5, 5, 5, False)
-        second_input = (3, 1, 2, 0, False)
-        # When
-        first_result = perudo_stats.get_posterior_proba(*first_input)
-        second_result = perudo_stats.get_posterior_proba(*second_input)
-        # Then
-        self.assertAlmostEqual(first_result, 0.2222222222)
-        self.assertAlmostEqual(second_result, 0.3333333333)
-
 
 if __name__ == "__main__":
     unittest.main()
