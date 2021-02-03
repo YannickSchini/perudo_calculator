@@ -1,3 +1,4 @@
+from typing import List
 import dash
 import pandas as pd
 import plotly.express as px
@@ -92,7 +93,10 @@ def input_card() -> html.Div:
 @app.callback(dash.dependencies.Output("Own Dive Values Container",
                                        "children"),
               dash.dependencies.Input("Own Dice Number", "value"))
-def choose_own_dice_values(own_dice_num: int) -> html.Div:
+def choose_own_dice_values(own_dice_num: int) -> List[html.Div]:
+    """ Manage the input of the values of one's own dices.
+    Returns a list of Divs containing a number of Inputs based on \
+    the Dropdown value. """
     div_list = []
     for i in range(own_dice_num):
         new_input = dcc.Input(id="OwnDice" + str(i + 1),
@@ -100,6 +104,6 @@ def choose_own_dice_values(own_dice_num: int) -> html.Div:
                               debounce=True,
                               placeholder="Value of dice #" + str(i + 1),
                               min=1,
-                              max=6),
+                              max=6)
         div_list.append(html.Div(children=new_input))
     return div_list
